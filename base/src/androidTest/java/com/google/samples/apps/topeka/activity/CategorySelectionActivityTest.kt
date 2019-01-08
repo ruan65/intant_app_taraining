@@ -58,7 +58,7 @@ class CategorySelectionActivityTest {
 
     @Suppress("unused") // actually used by Espresso
     val activityRule @Rule get() = object :
-            ActivityTestRule<CategorySelectionActivity>(CategorySelectionActivity::class.java) {
+            ActivityTestRule<com.google.samples.apps.topeka.activity.CategorySelectionActivity>(com.google.samples.apps.topeka.activity.CategorySelectionActivity::class.java) {
 
         override fun beforeActivityLaunched() {
             login = TestLogin
@@ -71,7 +71,7 @@ class CategorySelectionActivityTest {
 
         override fun getActivityIntent(): Intent {
             targetContext = InstrumentationRegistry.getTargetContext()
-            return CategorySelectionActivity.getStartIntent(targetContext, TEST_PLAYER)
+            return com.google.samples.apps.topeka.activity.CategorySelectionActivity.getStartIntent(targetContext, TEST_PLAYER)
         }
     }
 

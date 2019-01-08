@@ -15,4 +15,4 @@
  */
 
 
-include ':base', ':installed', ':instant'
+include ':base', ':installed', ':instant', ':categories'

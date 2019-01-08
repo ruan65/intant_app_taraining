@@ -31,7 +31,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import com.google.samples.apps.topeka.base.R
+import com.google.samples.apps.topeka.categories.R
+import com.google.samples.apps.topeka.base.R as RBase
 import com.google.samples.apps.topeka.adapter.CategoryAdapter
 import com.google.samples.apps.topeka.helper.ActivityLaunchHelper
 import com.google.samples.apps.topeka.helper.TransitionHelper
@@ -48,7 +49,7 @@ class CategorySelectionFragment : Fragment() {
                     AdapterView.OnItemClickListener { _, v, position, _ ->
                         adapter?.getItem(position)?.let {
                             startQuizActivityWithTransition(this,
-                                    v.findViewById(R.id.category_title), it)
+                                    v.findViewById(RBase.id.category_title), it)
                         }
                     })
         }
@@ -68,14 +69,14 @@ class CategorySelectionFragment : Fragment() {
     private fun setUpQuizGrid(categoriesView: RecyclerView) {
         with(categoriesView) {
             addItemDecoration(OffsetDecoration(context.resources
-                    .getDimensionPixelSize(R.dimen.spacing_nano)))
+                    .getDimensionPixelSize(RBase.dimen.spacing_nano)))
             adapter = this@CategorySelectionFragment.adapter
             beforeDrawing { activity?.supportStartPostponedEnterTransition() }
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_CATEGORY && resultCode == R.id.solved && data != null) {
+        if (requestCode == REQUEST_CATEGORY && resultCode == RBase.id.solved && data != null) {
             adapter?.notifyItemChanged(data.getStringExtra(JsonAttributes.ID))
         }
         super.onActivityResult(requestCode, resultCode, data)
@@ -88,7 +89,7 @@ class CategorySelectionFragment : Fragment() {
         val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
                 *TransitionHelper.createSafeTransitionParticipants(activity,
                         false,
-                        Pair(toolbar, activity.getString(R.string.transition_toolbar))))
+                        Pair(toolbar, activity.getString(RBase.string.transition_toolbar))))
                 .toBundle()
 
         // Start the activity with the participants, animating from one to the other.
