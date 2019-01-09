@@ -49,7 +49,7 @@ class CategorySelectionFragment : Fragment() {
                     AdapterView.OnItemClickListener { _, v, position, _ ->
                         adapter?.getItem(position)?.let {
                             startQuizActivityWithTransition(this,
-                                    v.findViewById(RBase.id.category_title), it)
+                                    v.findViewById(R.id.category_title), it)
                         }
                     })
         }

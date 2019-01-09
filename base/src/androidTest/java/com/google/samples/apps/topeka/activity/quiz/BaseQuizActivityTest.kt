@@ -16,7 +16,6 @@
 
 package com.google.samples.apps.topeka.activity.quiz
 
-import android.content.Intent
 import android.support.test.InstrumentationRegistry
 import android.support.test.espresso.Espresso
 import android.support.test.espresso.Espresso.onView
@@ -31,8 +30,8 @@ import android.view.View
 import com.google.samples.apps.topeka.base.R
 import com.google.samples.apps.topeka.SolveQuizUtil
 import com.google.samples.apps.topeka.TestLogin
-import com.google.samples.apps.topeka.activity.QuizActivity
-import com.google.samples.apps.topeka.activity.countingIdlingResource
+import com.google.samples.apps.topeka.quiz.QuizActivity
+import com.google.samples.apps.topeka.quiz.countingIdlingResource
 import com.google.samples.apps.topeka.helper.database
 import com.google.samples.apps.topeka.helper.login
 import com.google.samples.apps.topeka.helper.logout
@@ -56,7 +55,7 @@ class BaseQuizActivityTest {
 
     @Suppress("unused") // actually used by Espresso
     val activityRule @Rule get() = object :
-            ActivityTestRule<QuizActivity>(QuizActivity::class.java) {
+            ActivityTestRule<com.google.samples.apps.topeka.quiz.QuizActivity>(com.google.samples.apps.topeka.quiz.QuizActivity::class.java) {
         override fun beforeActivityLaunched() {
             login = TestLogin
             with(InstrumentationRegistry.getTargetContext()) {
@@ -87,14 +86,14 @@ class BaseQuizActivityTest {
      * Register idling resources for the activity under test.
      */
     @Before fun registerIdlingResources() {
-        Espresso.registerIdlingResources(countingIdlingResource)
+        Espresso.registerIdlingResources(com.google.samples.apps.topeka.quiz.countingIdlingResource)
     }
 
     /**
      * Unregister idling resources for the activity under test.
      */
     @After fun unregisterIdlingResources() {
-        Espresso.unregisterIdlingResources(countingIdlingResource)
+        Espresso.unregisterIdlingResources(com.google.samples.apps.topeka.quiz.countingIdlingResource)
     }
 
     /**
