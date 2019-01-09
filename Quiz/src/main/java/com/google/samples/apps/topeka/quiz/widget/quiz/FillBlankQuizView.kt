@@ -24,7 +24,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import com.google.samples.apps.topeka.base.R
+import com.google.samples.apps.topeka.quiz.R
 import com.google.samples.apps.topeka.model.Category
 import com.google.samples.apps.topeka.model.quiz.FillBlankQuiz
 import com.google.samples.apps.topeka.widget.TextWatcherAdapter

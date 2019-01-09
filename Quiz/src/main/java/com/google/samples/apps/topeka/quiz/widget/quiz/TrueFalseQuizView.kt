@@ -22,7 +22,8 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 
-import com.google.samples.apps.topeka.base.R
+import com.google.samples.apps.topeka.base.R as RBase
+import com.google.samples.apps.topeka.quiz.R
 import com.google.samples.apps.topeka.model.Category
 import com.google.samples.apps.topeka.model.quiz.TrueFalseQuiz
 

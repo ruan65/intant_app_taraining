@@ -26,7 +26,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 
-import com.google.samples.apps.topeka.base.R
+import com.google.samples.apps.topeka.quiz.R
 import com.google.samples.apps.topeka.model.Category
 import com.google.samples.apps.topeka.model.quiz.Quiz
 import com.google.samples.apps.topeka.widget.TextWatcherAdapter

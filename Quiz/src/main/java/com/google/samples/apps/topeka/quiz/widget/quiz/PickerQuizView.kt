@@ -22,7 +22,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
 import android.widget.TextView
-import com.google.samples.apps.topeka.base.R
+import com.google.samples.apps.topeka.quiz.R
 import com.google.samples.apps.topeka.model.Category
 import com.google.samples.apps.topeka.model.quiz.PickerQuiz
 import com.google.samples.apps.topeka.quiz.widget.SeekBarListener

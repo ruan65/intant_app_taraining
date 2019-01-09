@@ -30,7 +30,8 @@ import android.widget.AdapterViewAnimator
 import android.widget.ListView
 import android.widget.ProgressBar
 import android.widget.TextView
-import com.google.samples.apps.topeka.base.R
+import com.google.samples.apps.topeka.quiz.R
+import com.google.samples.apps.topeka.base.R as RBase
 import com.google.samples.apps.topeka.helper.ApiLevelHelper
 import com.google.samples.apps.topeka.helper.database
 import com.google.samples.apps.topeka.helper.inflate
@@ -141,7 +142,7 @@ class QuizFragment : Fragment() {
 
     private fun setProgress(currentQuizPosition: Int) {
         if (isAdded) {
-            progressText?.text = getString(R.string.quiz_of_quizzes, currentQuizPosition,
+            progressText?.text = getString(RBase.string.quiz_of_quizzes, currentQuizPosition,
                     category.quizzes.size)
             progressBar?.progress = currentQuizPosition
         }

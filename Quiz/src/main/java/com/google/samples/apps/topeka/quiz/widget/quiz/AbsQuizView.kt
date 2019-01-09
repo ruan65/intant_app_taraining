@@ -20,6 +20,7 @@ import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -38,8 +39,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.google.samples.apps.topeka.base.R
-import com.google.samples.apps.topeka.quiz.QuizActivity
+import com.google.samples.apps.topeka.quiz.R
+import com.google.samples.apps.topeka.base.R as RBase
+import com.google.samples.apps.topeka.quiz.activity.QuizActivity
 import com.google.samples.apps.topeka.helper.ApiLevelHelper
 import com.google.samples.apps.topeka.helper.FOREGROUND_COLOR
 import com.google.samples.apps.topeka.helper.onLayoutChange
@@ -86,7 +88,7 @@ abstract class AbsQuizView<out Q : Quiz<*>>
         val container = createContainerLayout(context)
 
         quizContentView = createQuizContentView()?.apply {
-            id = R.id.quiz_content
+            id = RBase.id.quiz_content
             isSaveEnabled = true
             if (this is ViewGroup) {
                 clipToPadding = false
@@ -100,7 +102,7 @@ abstract class AbsQuizView<out Q : Quiz<*>>
     private val ANSWER_HIDE_DELAY = 500L
 
     private val FOREGROUND_COLOR_CHANGE_DELAY = 750L
-    private val doubleSpacing = resources.getDimensionPixelSize(R.dimen.spacing_double)
+    private val doubleSpacing = resources.getDimensionPixelSize(RBase.dimen.spacing_double)
     private val linearOutSlowInInterpolator = LinearOutSlowInInterpolator()
     private val quizHandler = Handler()
 
@@ -140,7 +142,7 @@ abstract class AbsQuizView<out Q : Quiz<*>>
 
     private fun createContainerLayout(context: Context): LinearLayout {
         return LinearLayout(context).apply {
-            id = R.id.absQuizViewContainer
+            id = RBase.id.absQuizViewContainer
             orientation = LinearLayout.VERTICAL
         }
     }
@@ -160,7 +162,7 @@ abstract class AbsQuizView<out Q : Quiz<*>>
     }
 
     private fun addFloatingActionButton() {
-        val fabSize = resources.getDimensionPixelSize(R.dimen.size_fab)
+        val fabSize = resources.getDimensionPixelSize(RBase.dimen.size_fab)
         val bottomOfQuestionView = findViewById<View>(R.id.question_view).bottom
         val fabLayoutParams = FrameLayout.LayoutParams(fabSize, fabSize, Gravity.END or Gravity.TOP)
         val halfAFab = fabSize / 2
@@ -208,10 +210,10 @@ abstract class AbsQuizView<out Q : Quiz<*>>
      * @param answerCorrect `true` if the answer was correct, else `false`.
      */
     private fun performScoreAnimation(answerCorrect: Boolean) {
-        (context as com.google.samples.apps.topeka.quiz.QuizActivity).lockIdlingResource()
+        (context as QuizActivity).lockIdlingResource()
         // Decide which background color to use.
         val backgroundColor = ContextCompat.getColor(context,
-                if (answerCorrect) R.color.green else R.color.red)
+                if (answerCorrect) RBase.color.green else RBase.color.red)
         adjustFab(answerCorrect, backgroundColor)
         resizeView()
         moveViewOffScreen(answerCorrect)
@@ -266,11 +268,11 @@ abstract class AbsQuizView<out Q : Quiz<*>>
     }
 
     private fun setMinHeightInternal(view: View) {
-        view.minimumHeight = resources.getDimensionPixelSize(R.dimen.min_height_question)
+        view.minimumHeight = resources.getDimensionPixelSize(RBase.dimen.min_height_question)
     }
 
     private fun proceed() {
-        if (context is com.google.samples.apps.topeka.quiz.QuizActivity) (context as com.google.samples.apps.topeka.quiz.QuizActivity).proceed()
+        if (context is QuizActivity) (context as QuizActivity).proceed()
     }
 
     protected fun <T: View> inflate(@LayoutRes resId: Int) =

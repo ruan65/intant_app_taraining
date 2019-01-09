@@ -24,7 +24,8 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.GridView
 
-import com.google.samples.apps.topeka.base.R
+import com.google.samples.apps.topeka.quiz.R
+import com.google.samples.apps.topeka.base.R as RBase
 import com.google.samples.apps.topeka.helper.ApiLevelHelper
 import com.google.samples.apps.topeka.helper.onLayoutChange
 import com.google.samples.apps.topeka.model.Category
@@ -45,7 +46,7 @@ class FourQuarterQuizView(
     override fun createQuizContentView(): View {
         return GridView(context).apply {
             answerView = this
-            setSelector(R.drawable.selector_button)
+            setSelector(RBase.drawable.selector_button)
             numColumns = 2
             quiz.options.let {
                 adapter = com.google.samples.apps.topeka.quiz.adapter.OptionsQuizAdapter(quiz.options, R.layout.item_answer)

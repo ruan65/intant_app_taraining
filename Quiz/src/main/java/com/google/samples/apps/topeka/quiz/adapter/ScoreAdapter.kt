@@ -30,7 +30,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.google.samples.apps.topeka.helper.inflate
 import com.google.samples.apps.topeka.model.Category
-import com.google.samples.apps.topeka.base.R
+import com.google.samples.apps.topeka.quiz.R
+import com.google.samples.apps.topeka.base.R as RBase
 
 /**
  * Adapter for displaying score cards.
@@ -39,8 +40,8 @@ class ScoreAdapter(private val context: Context, private val category: Category)
 
     private val quizList = category.quizzes
     private val count = quizList.size
-    private val successIcon by lazy { loadAndTint(R.drawable.ic_tick, R.color.theme_green_primary) }
-    private val failedIcon by lazy { loadAndTint(R.drawable.ic_cross, R.color.theme_red_primary) }
+    private val successIcon by lazy { loadAndTint(RBase.drawable.ic_tick, RBase.color.theme_green_primary) }
+    private val failedIcon by lazy { loadAndTint(RBase.drawable.ic_cross, RBase.color.theme_red_primary) }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup) =
             (convertView ?: createView(parent))

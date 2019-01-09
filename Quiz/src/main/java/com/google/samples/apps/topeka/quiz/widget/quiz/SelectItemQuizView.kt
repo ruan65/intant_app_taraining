@@ -24,7 +24,8 @@ import android.widget.AbsListView
 import android.widget.AdapterView
 import android.widget.ListView
 
-import com.google.samples.apps.topeka.base.R
+import com.google.samples.apps.topeka.quiz.R
+import com.google.samples.apps.topeka.base.R as RBase
 import com.google.samples.apps.topeka.helper.AnswerHelper
 import com.google.samples.apps.topeka.model.Category
 import com.google.samples.apps.topeka.model.quiz.SelectItemQuiz
@@ -42,7 +43,7 @@ class SelectItemQuizView(
     override fun createQuizContentView(): View? {
         return ListView(context).apply {
             divider = null
-            setSelector(R.drawable.selector_button)
+            setSelector(RBase.drawable.selector_button)
             adapter = com.google.samples.apps.topeka.quiz.adapter.OptionsQuizAdapter(quiz.options, R.layout.item_answer_start,
                     context, true)
             choiceMode = AbsListView.CHOICE_MODE_SINGLE

@@ -41,7 +41,8 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
-import com.google.samples.apps.topeka.base.R
+import com.google.samples.apps.topeka.base.R as RBase
+import com.google.samples.apps.topeka.quiz.R
 import com.google.samples.apps.topeka.quiz.fragment.QuizFragment
 import com.google.samples.apps.topeka.helper.ApiLevelHelper
 import com.google.samples.apps.topeka.helper.FOREGROUND_COLOR
@@ -74,8 +75,8 @@ class QuizActivity : AppCompatActivity() {
     private val onClickListener = View.OnClickListener {
         when (it.id) {
             R.id.fab_quiz -> startQuizFromClickOn(it)
-            R.id.submitAnswer -> submitAnswer()
-            R.id.quiz_done -> ActivityCompat.finishAfterTransition(this@QuizActivity)
+            RBase.id.submitAnswer -> submitAnswer()
+            RBase.id.quiz_done -> ActivityCompat.finishAfterTransition(this@QuizActivity)
             R.id.back -> onBackPressed()
             else -> throw UnsupportedOperationException(
                     "OnClick has not been implemented for " + resources.getResourceName(it.id))
@@ -90,9 +91,9 @@ class QuizActivity : AppCompatActivity() {
         }
         populate(intent.getStringExtra(Category.TAG))
         val categoryNameTextSize = resources
-                .getDimensionPixelSize(R.dimen.category_item_text_size)
-        val paddingStart = resources.getDimensionPixelSize(R.dimen.spacing_double)
-        val startDelay = resources.getInteger(R.integer.toolbar_transition_duration).toLong()
+                .getDimensionPixelSize(RBase.dimen.category_item_text_size)
+        val paddingStart = resources.getDimensionPixelSize(RBase.dimen.spacing_double)
+        val startDelay = resources.getInteger(RBase.integer.toolbar_transition_duration).toLong()
         ActivityCompat.setEnterSharedElementCallback(this,
                 object : TextSharedElementCallback(categoryNameTextSize.toFloat(), paddingStart) {
                     override fun onSharedElementStart(sharedElementNames: List<String>?,
@@ -155,7 +156,7 @@ class QuizActivity : AppCompatActivity() {
                     .start()
         }
         quizFab = (findViewById<FloatingActionButton>(R.id.fab_quiz)).apply {
-            setImageResource(R.drawable.ic_play)
+            setImageResource(RBase.drawable.ic_play)
             if (savedStateIsPlaying) hide() else show()
             setOnClickListener(onClickListener)
         }
@@ -326,14 +327,14 @@ class QuizActivity : AppCompatActivity() {
     fun setToolbarElevation(shouldElevate: Boolean) {
         if (ApiLevelHelper.isAtLeast(Build.VERSION_CODES.LOLLIPOP)) {
             toolbarBack?.elevation = if (shouldElevate)
-                resources.getDimension(R.dimen.elevation_header)
+                resources.getDimension(RBase.dimen.elevation_header)
             else
                 0f
         }
     }
 
     private fun setResultSolved() {
-        setResult(R.id.solved, Intent().apply { putExtra(JsonAttributes.ID, category.id) })
+        setResult(RBase.id.solved, Intent().apply { putExtra(JsonAttributes.ID, category.id) })
     }
 
     private val solvedStateListener
@@ -366,8 +367,8 @@ class QuizActivity : AppCompatActivity() {
 
             private fun showQuizFabWithDoneIcon() {
                 with(quizFab ?: return) {
-                    setImageResource(R.drawable.ic_tick)
-                    id = R.id.quiz_done
+                    setImageResource(RBase.drawable.ic_tick)
+                    id = RBase.id.quiz_done
                     visibility = View.VISIBLE
                     scaleX = 0f
                     scaleY = 0f
